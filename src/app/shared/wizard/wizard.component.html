@@ -1,0 +1,149 @@
+<mat-horizontal-stepper [linear]="isLinear" #stepper>
+    <mat-step [stepControl]="senderFormGroup">
+        <form [formGroup]="senderFormGroup">
+            <ng-template matStepLabel>Sender Form</ng-template>
+            <div fxLayout="column" style="padding: 10px 20px;">
+                <div fxLayout="row" fxFlex="100%">
+                    <p class="form-text">Enter the Sender's Address:</p>
+                </div>
+                <div fxLayout="row" fxFlex="100%">
+                    <mat-form-field>
+                        <input matInput placeholder="Name" formControlName="name" required>
+                        <mat-error *ngIf="hasSenderError('name', 'required')">Name is required</mat-error>
+                    </mat-form-field>
+                </div>
+                <div fxLayout="row" fxFlex="100%">
+                    <mat-form-field>
+                        <input matInput placeholder="Street" formControlName="street" required>
+                        <mat-error *ngIf="hasSenderError('street', 'required')">Required</mat-error>
+                        <mat-error *ngIf="hasSenderError('street', 'maxlength')">You have more than 60 characters
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <br>
+                <div fxLayout="row">
+                    <mat-form-field fxFlex="30%">
+                        <input matInput placeholder="City" formControlName="city" required>
+                        <mat-error *ngIf="hasSenderError('city', 'required')">required</mat-error>
+                    </mat-form-field>
+                    <span fxFlex="3.33%"></span>
+                    <mat-form-field fxFlex="30%">
+                        <input matInput placeholder="State" formControlName="state" required>
+                        <mat-error *ngIf="hasSenderError('state', 'required')">required</mat-error>
+                        <mat-error *ngIf="hasSenderError('state', 'minlength')">You have less than 5 characters
+                        </mat-error>
+                    </mat-form-field>
+                    <span fxFlex="3.33%"></span>
+                    <mat-form-field fxFlex="33%">
+                        <input matInput placeholder="Zip" formControlName="zip" required>
+                        <mat-error *ngIf="hasSenderError('zip', 'required')">required</mat-error>
+                    </mat-form-field>
+                </div>
+                <div fxLayout="row">
+                    <button mat-raised-button fxFlex matStepperNext color="primary" (click)="action(wizardAction.Next)"
+                        class="form-forward-button">Next</button>
+                </div>
+            </div>
+        </form>
+    </mat-step>
+    <mat-step [stepControl]="receiverFormGroup">
+        <form [formGroup]="receiverFormGroup">
+            <ng-template matStepLabel>Receiver Form</ng-template>
+            <div fxLayout="column" style="padding: 10px 20px;">
+                <div fxLayout="row" fxFlex="100%">
+                    <p class="form-text">Enter the Receiver's Address:</p>
+                </div>
+                <div fxLayout="row" fxFlex="100%">
+                    <mat-form-field>
+                        <input matInput placeholder="Name" formControlName="name" required>
+                        <mat-error *ngIf="hasReceiverError('name', 'required')">required</mat-error>
+                    </mat-form-field>
+                </div>
+                <div fxLayout="row" fxFlex="100%">
+                    <mat-form-field>
+                        <input matInput placeholder="Street" formControlName="street" required>
+                        <mat-error *ngIf="hasReceiverError('street', 'required')">required</mat-error>
+                    </mat-form-field>
+                </div>
+                <br>
+                <div fxLayout="row">
+                    <mat-form-field fxFlex="30%">
+                        <input matInput placeholder="City" formControlName="city" required>
+                        <mat-error *ngIf="hasReceiverError('city', 'required')">required</mat-error>
+                    </mat-form-field>
+                    <span fxFlex="3.33%"></span>
+                    <mat-form-field fxFlex="30%">
+                        <input matInput placeholder="State" formControlName="state" required>
+                        <mat-error *ngIf="hasReceiverError('state', 'required')">required</mat-error>
+                    </mat-form-field>
+                    <span fxFlex="3.33%"></span>
+                    <mat-form-field fxFlex="33%">
+                        <input matInput placeholder="Zip" formControlName="zip" required>
+                        <mat-error *ngIf="hasReceiverError('zip', 'required')">required</mat-error>
+                    </mat-form-field>
+                </div>
+                <div fxLayout="row">
+                    <button mat-raised-button matStepperPrevious class="form-backward-button"
+                        (click)="action(wizardAction.Prev)">Back</button>
+                    <button mat-raised-button matStepperNext color="primary" class="form-forward-button"
+                        (click)="action(wizardAction.Next)">Next</button>
+                </div>
+            </div>
+        </form>
+    </mat-step>
+    <mat-step [stepControl]="weightFormGroup">
+        <form [formGroup]="weightFormGroup">
+            <ng-template matStepLabel>Weight Form</ng-template>
+            <div fxLayout="column" style="padding: 10px 20px;">
+                <div fxLayout="row" fxFlex="100%">
+                    <p class="form-text">Enter the Weight:</p>
+                </div>
+                <div fxLayout="row" fxFlex="100%">
+                    <mat-form-field>
+                        <input matInput placeholder="Weight" formControlName="weight" required>
+                        <mat-error *ngIf="hasWeightError('weight', 'required')">required</mat-error>
+                    </mat-form-field>
+                </div>
+                <div fxLayout="row">
+                    <button mat-raised-button matStepperPrevious class="form-backward-button"
+                        (click)="action(wizardAction.Prev)">Back</button>
+                    <button mat-raised-button matStepperNext color="primary" class="form-forward-button"
+                        (click)="action(wizardAction.Next)">Next</button>
+                </div>
+            </div>
+        </form>
+    </mat-step>
+    <mat-step [stepControl]="shippingOptionFormGroup">
+        <form [formGroup]="shippingOptionFormGroup">
+            <ng-template matStepLabel>Shipping Option Form</ng-template>
+            <div fxLayout="column" style="padding: 10px 20px;">
+                <div fxLayout="row" fxFlex="100%">
+                    <p class="form-text">Please select shipping option:</p>
+                </div>
+                <div fxLayout="row" fxFlex="100%">
+                    <mat-form-field>
+                        <mat-select formControlName="shippingoption" placeholder="Please select shipping option">
+                            <mat-option *ngFor="let option of shippingOptions | keyvalue; trackBy: trackByFn" [value]="option.value">
+                                {{option.key}}</mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="hasShippingError('shippingoption', 'required')">required</mat-error>
+                    </mat-form-field>
+                </div>
+                <div fxLayout="row">
+                    <button mat-raised-button matStepperPrevious class="form-backward-button"
+                        (click)="action(wizardAction.Prev)">Back</button>
+                    <button mat-raised-button matStepperNext color="primary" class="form-forward-button"
+                        (click)="action(wizardAction.Next)">Next</button>
+                </div>
+            </div>
+        </form>
+    </mat-step>
+    <mat-step>
+        <ng-template matStepLabel>Done</ng-template>
+        You are now done.
+        <div>
+            <button mat-raised-button matStepperPrevious (click)="action(wizardAction.Prev)">Back</button>
+            <button mat-raised-button color="primary" (click)="action(wizardAction.End)">Complete</button>
+        </div>
+    </mat-step>
+</mat-horizontal-stepper>

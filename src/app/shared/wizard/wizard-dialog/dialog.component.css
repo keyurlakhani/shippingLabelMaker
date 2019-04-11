@@ -1,0 +1,30 @@
+.invoice {
+    padding: 0px !important;
+    background: #fff;
+}
+.invoice-header {
+    margin: 0 -20px;
+    background: #f0f3f4;
+    padding: 20px;
+}
+.invoice-from, .invoice-to, .invoice-date {
+    display: table-cell;
+    width: 1%;
+}
+.invoice-from, .invoice-to {
+    padding-right: 20px;
+}
+.m-t-5 {
+    margin-top: 5px !important;
+}
+.m-b-5 {
+    margin-bottom: 5px !important;
+}
+
+.invoice-from, .invoice-to {
+    padding-right: 20px;
+}
+.invoice-date {
+    text-align: right;
+    padding-left: 20px;
+}

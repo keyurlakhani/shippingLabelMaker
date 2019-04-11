@@ -1,0 +1,15 @@
+mat-form-field {
+    width: 100%;
+}
+.form-forward-button{
+    position: fixed;
+    right:  3.5em;
+}
+.form-backward-button{
+    position: fixed;
+    right: 10em;
+}
+.form-text{
+    font-size: 14px;
+    font-weight: 500;
+}

@@ -1,0 +1,37 @@
+<div class="invoice">
+    <div class="invoice-header">
+        <div class="invoice-from">
+            <strong>From</strong>
+            <address class="m-t-5 m-b-5">
+                <strong>{{data.from.name}}</strong>
+                <br>
+                Street: {{data.from.street}}
+                <br>
+                City: {{data.from.city}}
+                <br>
+                State: {{data.from.state}}
+                <br>
+                Zip: {{data.from.zip}}
+            </address>
+        </div>
+        <div class="invoice-to">
+            <strong>To</strong>
+            <address class="m-t-5 m-b-5">
+                <strong>{{data.to.name}}</strong>
+                <br>
+                Street: {{data.to.street}}
+                <br>
+                City: {{data.to.city}}
+                <br>
+                State: {{data.to.state}}
+                <br>
+                Zip: {{data.to.zip}}
+            </address>
+        </div>
+        <div class="invoice-date">
+            <strong>Invoice period</strong>
+            <div id="invoice_date" class="date m-t-5">Weight: {{data.weight.weight}}</div>
+            <div id="invoice_id" class="invoice-detail">Shipping Cost: ${{shippingCost}}</div>
+        </div>
+    </div>
+</div>
